@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        function fib(num){
+            if (num === 1 || num === 0){
+                return 1;
+            }
+            return fib(num - 1) + fib(num - 2);
+        }
+
+        
+        function mergeSort(arr){
+            if (arr.length === 1) return arr;
+            let arr1 = arr.slice(0, Math.floor(arr.length / 2));
+            let arr2 = arr.slice(Math.floor(arr.length / 2), arr.length);
+            arr1 = mergeSort(arr1);
+            arr2 = mergeSort(arr2);
+            let returnArr = [];
+            while (arr1.length > 0 || arr2.length > 0){
+                if (arr2.length === 0 || arr1[0] < arr2[0]){
+                    returnArr.push(arr1.shift());
+                }
+                else {
+                    returnArr.push(arr2.shift());
+                }
+            }
+            return returnArr;
+
+        }
+
+        console.log(mergeSort([3, 2, 1, 13, 8, 5, 0, 1]))
+        console.log(mergeSort([105, 79, 100, 110]))
+
+    </script>
+
+</body>
+</html>
